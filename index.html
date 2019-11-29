@@ -5,25 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aula 01- Vuejs do jeito ninja!</title>
-  <style media="screen">
-    .red {
-      color: red
-    }
-    .green {
-      color: green
-    }
-  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 </head>
 <body>
   <div id="app">
     <h1>{{ titulo }}</h1>
-    <!--img v-bind:src="imagem" v-bind:alt="alt"-->
-    <!--img
-    :src="'https://miro.medium.com/max/400/1*wqYF-8Dmh7LhtLkKfERc3Q.png'"
-    :alt="'Vuejs is awesomw!'" title="" id=""
-    :data-img-large="'https://miro.medium.com/max/400/1*wqYF-8Dmh7LhtLkKfERc3Q.png'"-->
+    <button class="btn" :class="btnClassLimpar" :style="btnStyleLimpar">LIMPAR</button>
+    <button class="btn" :class="btnClassEnviar" :style="btnStyleEnviar">ENVIAR</button>
 
-    <p :class="classHtml">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quis debitis, architecto omnis qui magni odio quae tempora voluptatibus aut dignissimos odit nemo nulla velit alias consectetur sequi! Inventore, quibusdam.</p>
+    <!--button-- class="btn" v-bind:class="btnClassEnviar">ENVIAR</!--button-->
   </div>
 
   <script src="https://unpkg.com/vue"></script>
@@ -33,9 +23,21 @@
       el: "#app",
       data: {
          titulo: "Vuejs do jeito ninja!",
-       // imagem: "https://miro.medium.com/max/400/1*wqYF-8Dmh7LhtLkKfERc3Q.png",
-       // alt: "Vuejs is awesome!"
-       classHtml: "green"
+         //btnClassLimpar: 'btn-danger btn-sm',
+         btnClassLimpar:{
+           'btn-danger': true,
+           'btn-sm': true
+         },
+         //btnClassEnviar: 'btn-primary btn-lg'
+         btnClassEnviar: [
+           'btn-primary', { 'btn-lg':false }
+         ],
+         btnStyleLimpar: [
+         { 'font-size': '50px' },
+         { 'text-transform': 'lowercase' }
+         ],
+         btnStyleEnviar:
+         {'font-size': '10px'}
       }
     });
   </script>
