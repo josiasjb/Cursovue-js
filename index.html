@@ -10,6 +10,9 @@
 <body>
   <div id="app">
     <h1>{{ titulo }}</h1>
+    <ul>
+      <li v-for="usuario in usuarios">{{ usuario.nome | truncate('10') }}</li>
+    </ul>
     <form action="http://google.com">
         <button type="submit" class="btn btn-primary" @click.prevent.stop="enviar()">Enviar </button>
     </form>
@@ -21,14 +24,35 @@
   <script>
     var app = new Vue({
       el: "#app",
+
       data: {
          titulo: "Vuejs do jeito ninja!",
+         usuarios: [
+           { nome: 'Jon Snow' },
+           { nome: 'Tyrion Lannister' },
+           {nome: 'Daenerys Targaryen' }
+         ]
+      },
+
+      filters: {
+        toUpperCase(str) {
+          return str.toUpperCase();
+
+        },
+
+        truncate(str, length) {
+          var output = str;
+          if (output.length > length){
+            output = str.substring(0, length) + ' ... ';
+          }
+          return output;
+        }
       },
 
       methods: {
         enviar() {
           alert('Enviando!');
-        }
+        },
       }
     });
   </script>
